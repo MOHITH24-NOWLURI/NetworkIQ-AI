@@ -1,25 +1,23 @@
 # 🚀 NetworkIQ AI
 
-### AI-Powered Supply Chain Intelligence & Inventory Optimization Platform
+## AI-Powered Multi-Agent Inventory Optimization System for Retail Supply Chains
 
-NetworkIQ AI is an intelligent supply-chain analytics platform designed to help businesses monitor inventory, analyze demand, identify stockout risks, and make smarter warehouse-to-warehouse inventory transfer decisions.
+**NetworkIQ AI** is an intelligent supply-chain analytics and inventory optimization platform that analyzes sales, demand, inventory, and warehouse data to identify inventory risks and recommend smarter stock-transfer decisions.
 
-The platform combines a **FastAPI backend**, **React frontend**, data analytics, demand forecasting, inventory analysis, and AI-driven transfer recommendations into a unified dashboard.
+The platform combines a **Python/FastAPI backend** with a **React-based interactive dashboard** to transform supply-chain data into actionable business insights.
 
 ---
 
 ## 🎯 Problem Statement
 
-Modern supply chains generate large amounts of sales, inventory, demand, and warehouse data. However, identifying inventory shortages, surplus stock, demand patterns, and transfer opportunities manually can be time-consuming and inefficient.
+Retail supply chains often face two opposite problems:
 
-NetworkIQ AI addresses this problem by analyzing supply-chain data and providing actionable insights such as:
+* ⚠️ Warehouses running low on inventory
+* 📦 Other warehouses holding excess inventory
 
-- 📦 Inventory levels
-- 📈 Demand patterns
-- ⚠️ Stockout risks
-- 🏢 Warehouse inventory conditions
-- 🚚 Warehouse-to-warehouse transfer recommendations
-- 🤖 AI-generated business insights
+Without centralized analysis, identifying where inventory should be moved can be difficult and time-consuming.
+
+**NetworkIQ AI** analyzes warehouse-level inventory and demand information to identify these situations and generate data-driven transfer recommendations.
 
 ---
 
@@ -27,172 +25,184 @@ NetworkIQ AI addresses this problem by analyzing supply-chain data and providing
 
 ### 📊 Executive Dashboard
 
-A centralized dashboard provides an overview of the supply-chain system, including:
+Provides a centralized view of important supply-chain KPIs:
 
-- Total Products
-- Total Sales
-- Total Profit
-- Number of Warehouses
-- Total Inventory
-- Stockout Risk
-- System Status
-- Refreshable dashboard data
-
----
+* 📦 Total Products
+* 💰 Total Sales
+* 📈 Total Profit
+* 🏢 Number of Warehouses
+* 📦 Total Inventory
+* ⚠️ Stockout Risk
+* 🔄 Refreshable live dashboard data
 
 ### 📈 Demand & Sales Analytics
 
-NetworkIQ analyzes product demand and sales information through interactive visualizations.
-
-Features include:
-
-- Top-selling product analysis
-- Sales trend visualization
-- Demand forecasting
-- Product-level analytics
-
----
+* Top-selling product analysis
+* Sales trend visualization
+* Demand forecast analysis
+* Product-level demand information
 
 ### 📦 Inventory Intelligence
 
-The inventory module analyzes warehouse stock levels and identifies inventory conditions.
+Analyzes inventory conditions across warehouses using:
 
-It evaluates:
+* Current inventory
+* Reorder points
+* Demand forecasts
+* Low-stock detection
+* Inventory health indicators
+* Stockout risk
 
-- Current inventory
-- Reorder points
-- Demand forecasts
-- Low-stock conditions
-- Inventory health
-- Stockout risk
+### 🚚 AI Inventory Transfer Recommendations
 
----
+NetworkIQ identifies:
 
-### 🤖 AI Inventory Recommendations
-
-NetworkIQ generates inventory recommendations based on warehouse inventory conditions and demand requirements.
-
-The system identifies:
-
-- Warehouses requiring inventory
-- Warehouses with surplus inventory
-- Products requiring transfers
-- Recommended transfer quantities
-- Transfer priorities
-- Reasoning behind recommendations
-
----
-
-### 🚚 Smart Inventory Transfer
-
-The transfer engine identifies suitable source and destination warehouses for inventory movement.
-
-For each recommendation, the system can provide:
-
-| Field | Description |
-|---|---|
-| SKU | Product identifier |
-| From Warehouse | Warehouse providing inventory |
-| To Warehouse | Warehouse receiving inventory |
-| Transfer Quantity | Recommended quantity to transfer |
-| Source Inventory | Current inventory at source |
-| Destination Inventory | Current inventory at destination |
-| Demand Forecast | Expected demand |
-| Priority | HIGH / MEDIUM / LOW |
-| Recommendation | Recommended action |
-| Reason | Explanation for the recommendation |
-
----
+1. Warehouses below their reorder point
+2. Warehouses with available surplus inventory
+3. Suitable source and destination warehouses
+4. Recommended transfer quantities
+5. Transfer priority
+6. Reasoning behind each recommendation
 
 ### 🚨 AI Supply Chain Alerts
 
-The dashboard highlights important inventory situations using priority levels:
+The dashboard highlights important recommendations using priority levels:
 
-- 🔴 **HIGH** – Critical inventory situation
-- 🟠 **MEDIUM** – Requires attention
-- 🟢 **LOW** – Lower-priority situation
-
-This helps users focus on the most important supply-chain decisions first.
-
----
+* 🔴 **HIGH** — Higher-priority inventory situation
+* 🟠 **MEDIUM** — Requires attention
+* 🟢 **LOW** — Lower-priority situation
 
 ### 🧠 AI Business Insights
 
-NetworkIQ converts analytical results into easy-to-understand business insights covering:
+The dashboard summarizes inventory and supply-chain conditions into business-oriented insights, helping users understand:
 
-- Inventory conditions
-- Profit
-- Warehouse status
-- Stockout risk
-- Transfer recommendations
-- Supply-chain actions
+* Inventory status
+* Profit
+* Warehouse conditions
+* Stockout risk
+* Recommended actions
 
 ---
 
 ## 🏗️ System Architecture
 
 ```text
-                    ┌──────────────────────────┐
-                    │       Supply Chain       │
-                    │          Data            │
-                    └────────────┬─────────────┘
+                    ┌─────────────────────────┐
+                    │     Supply Chain Data   │
+                    │ Sales / Inventory /     │
+                    │ Demand / Warehouses     │
+                    └────────────┬────────────┘
                                  │
                                  ▼
-                    ┌──────────────────────────┐
-                    │     Data Processing      │
-                    │   Pandas / Python        │
-                    └────────────┬─────────────┘
+                    ┌─────────────────────────┐
+                    │   Python Data Analysis   │
+                    │         Pandas           │
+                    └────────────┬────────────┘
                                  │
              ┌───────────────────┼───────────────────┐
              │                   │                   │
              ▼                   ▼                   ▼
-      Demand Analysis      Inventory Analysis   Transfer Engine
+      Demand Analysis     Inventory Analysis   Transfer Engine
              │                   │                   │
              └───────────────────┼───────────────────┘
                                  │
                                  ▼
-                    ┌──────────────────────────┐
-                    │       FastAPI API        │
-                    │         Backend          │
-                    └────────────┬─────────────┘
+                    ┌─────────────────────────┐
+                    │       FastAPI API       │
+                    │         Backend         │
+                    └────────────┬────────────┘
                                  │
                                  ▼
-                    ┌──────────────────────────┐
-                    │      React Frontend      │
-                    │    NetworkIQ Dashboard   │
-                    └────────────┬─────────────┘
+                    ┌─────────────────────────┐
+                    │      React Frontend     │
+                    │    NetworkIQ Dashboard  │
+                    └────────────┬────────────┘
                                  │
                                  ▼
-                    ┌──────────────────────────┐
-                    │ AI Insights & Decision   │
-                    │        Support           │
-                    └──────────────────────────┘
- 🛠️ Technology Stack
-Frontend
-React
-Vite
-JavaScript
-React Router
-Recharts
-HTML5
-CSS
-Backend
-Python
-FastAPI
-Pandas
-Uvicorn
-Data & Analytics
-CSV datasets
-Pandas DataFrames
-Inventory analysis
-Demand forecasting
-Supply-chain analytics
-Development Tools
-Git
-GitHub
-Visual Studio Code
-PowerShell
-📁 Project Structure
+                    ┌─────────────────────────┐
+                    │ AI Alerts & Decision    │
+                    │       Support           │
+                    └─────────────────────────┘
+```
+
+---
+
+## 🤖 AI Recommendation Workflow
+
+```text
+Inventory Data
+      │
+      ▼
+Latest SKU + Warehouse Records
+      │
+      ▼
+Identify Low-Stock Warehouses
+      │
+      ▼
+Identify Surplus Warehouses
+      │
+      ▼
+Calculate Inventory Shortage
+      │
+      ▼
+Analyze Demand Pressure
+      │
+      ▼
+Calculate Transfer Quantity
+      │
+      ▼
+Assign Priority
+      │
+      ▼
+Generate Recommendation
+      │
+      ▼
+Display Decision Support
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### Backend
+
+* Python
+* FastAPI
+* Pandas
+* Uvicorn
+* REST APIs
+
+### Frontend
+
+* React
+* Vite
+* JavaScript
+* React Router
+* Recharts
+* HTML5
+* CSS
+
+### Data & Analytics
+
+* CSV datasets
+* Pandas DataFrames
+* Demand analysis
+* Inventory analysis
+* Reorder-point analysis
+* Warehouse-level transfer analysis
+
+### Development
+
+* Visual Studio Code
+* Git
+* GitHub
+* PowerShell
+
+---
+
+## 📁 Project Structure
+
+```text
 NetworkIQ-AI/
 │
 ├── backend/
@@ -242,67 +252,102 @@ NetworkIQ-AI/
 │
 ├── .gitignore
 └── README.md
-🔌 API Endpoints
+```
 
-The FastAPI backend currently provides the following endpoints:
+---
 
-Endpoint	Purpose
-GET /	API status
-GET /dashboard	Dashboard KPIs
-GET /demand	Demand analysis
-GET /inventory	Inventory analysis
-GET /recommendations	AI transfer recommendations
-⚙️ Installation & Setup
-1. Clone the repository
+## 🔌 Backend API
+
+The FastAPI backend exposes the following endpoints:
+
+| Endpoint           | Purpose                            |
+| ------------------ | ---------------------------------- |
+| `/`                | API status                         |
+| `/dashboard`       | Dashboard KPI data                 |
+| `/demand`          | Demand analysis                    |
+| `/inventory`       | Inventory analysis                 |
+| `/recommendations` | Inventory transfer recommendations |
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/MOHITH24-NOWLURI/NetworkIQ-AI.git
 cd NetworkIQ-AI
-🐍 Backend Setup
+```
+
+---
+
+## 🐍 Backend Setup
 
 Navigate to the backend:
 
+```bash
 cd backend
+```
 
 Create a virtual environment:
 
+```bash
 python -m venv venv
+```
 
 Activate it on Windows:
 
+```powershell
 venv\Scripts\activate
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
 Start the FastAPI server:
 
+```bash
 uvicorn app:app --reload
+```
 
-The backend will be available at:
+Backend:
 
+```text
 http://127.0.0.1:8000
-⚛️ Frontend Setup
+```
 
-Open another terminal.
+---
 
-Navigate to the frontend:
+## ⚛️ Frontend Setup
 
+Open another terminal and navigate to:
+
+```bash
 cd frontend
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
-Start the development server:
+Start the React development server:
 
+```bash
 npm run dev
+```
 
-The frontend will be available at the local URL provided by Vite.
+Open the local URL displayed by Vite.
 
-📊 Dashboard Modules
+---
 
-The NetworkIQ dashboard contains:
+## 📊 Dashboard Modules
 
+```text
 🚀 NetworkIQ AI
 │
 ├── 📊 Demand & Sales Analytics
@@ -316,61 +361,69 @@ The NetworkIQ dashboard contains:
     ├── Supply Chain Alerts
     ├── SKU Recommendations
     └── AI Business Insights
-🔄 AI Recommendation Workflow
-Inventory Data
-      │
-      ▼
-Latest SKU + Warehouse Records
-      │
-      ▼
-Identify Low-Stock Warehouses
-      │
-      ▼
-Identify Surplus Warehouses
-      │
-      ▼
-Calculate Inventory Shortage
-      │
-      ▼
-Analyze Demand Pressure
-      │
-      ▼
-Calculate Transfer Quantity
-      │
-      ▼
-Assign Priority
-      │
-      ▼
-Generate Recommendation
-      │
-      ▼
-Display AI Decision Support
-🎯 Use Cases
+```
 
-NetworkIQ can support:
+---
 
-Retail supply-chain management
-Warehouse inventory monitoring
-Stockout prevention
-Inventory redistribution
-Demand analysis
-Supply-chain decision support
-Business intelligence dashboards
-🔮 Future Enhancements
+## 📦 Recommendation Output
+
+A recommendation can contain information such as:
+
+| Field                 | Description                        |
+| --------------------- | ---------------------------------- |
+| SKU                   | Product identifier                 |
+| From Warehouse        | Source warehouse                   |
+| To Warehouse          | Destination warehouse              |
+| Transfer Quantity     | Suggested quantity                 |
+| Source Inventory      | Inventory at source                |
+| Destination Inventory | Inventory at destination           |
+| Demand Forecast       | Expected demand                    |
+| Priority              | HIGH / MEDIUM / LOW                |
+| Recommendation        | Suggested action                   |
+| Reason                | Explanation for the recommendation |
+
+---
+
+## 🎯 Use Cases
+
+NetworkIQ AI can support:
+
+* Retail inventory monitoring
+* Warehouse stock management
+* Stockout-risk identification
+* Inventory redistribution
+* Demand analysis
+* Supply-chain analytics
+* Warehouse decision support
+* Business intelligence
+
+---
+
+## 🔮 Future Enhancements
 
 Potential future improvements include:
 
-Advanced machine-learning demand forecasting
-Real-time inventory integration
-Automated transfer approval
-Supplier risk analysis
-Inventory cost optimization
-Delivery-time prediction
-Natural-language AI assistant
-Explainable AI recommendations
-Cloud deployment
-Authentication and role-based access
-Real-time notifications
-                    
-                    │        Support           │
-                    └──────────────────────────┘
+* Advanced machine-learning demand forecasting
+* Real-time inventory integration
+* Automated transfer approval workflows
+* Inventory cost optimization
+* Supplier risk analysis
+* Delivery-time prediction
+* Natural-language supply-chain assistant
+* Real-time notifications
+* Cloud deployment
+* Authentication and role-based access
+
+---
+
+## 👨‍💻 Project
+
+**NetworkIQ AI**
+
+An AI-powered multi-agent inventory optimization platform designed to transform supply-chain data into actionable inventory and warehouse decisions.
+
+---
+
+## 📄 License
+
+This project is developed for educational, demonstration, hackathon, and portfolio purposes.
