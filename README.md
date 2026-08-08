@@ -371,6 +371,6 @@ Explainable AI recommendations
 Cloud deployment
 Authentication and role-based access
 Real-time notifications
-                    │ AI Insights & Decision   │
+                    
                     │        Support           │
                     └──────────────────────────┘
